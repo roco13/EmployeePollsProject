@@ -5,9 +5,70 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+    padding: 0;
+    font-family: sans-serif;
+    color: #252525;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.active {
+  font-weight: bold;
+}
+.container {
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 10px;
+  }
+nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  text-decoration: none;
+}
+
+nav li:first-child {
+  padding-left: 0;
+}
+
+nav ul {
+  padding-left: 0;
+}
+
+nav li {
+  list-style-type: none;
+  padding: 10px;
+  text-decoration: none;
+}
+.dashboard-container {
+  max-width: 1200px;
+  margin: auto;
+}
+.dashboard-list {
+  display: flex;
+}
+.dashboard-list li {
+  width: 300px;
+  border: 1px solid #999;
+  list-style: none;
+  margin: 10px;
+  padding: 5px 10px 15px;
+}
+.dashboard-list li img {
+  float: left;
+  margin: 0 10px 0 0;
+}
+.go-to-poll {
+  width: 100px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 5px;
+  margin: auto;
+  display: block;
+  text-decoration: none;
+  background-color: rgb(218, 213, 213);
+  text-align: center;
+  color: #000;
 }
