@@ -1,30 +1,14 @@
 import { connect } from "react-redux";
-import Poll from "./Poll";
-import { mapUsersAnswers } from "../actions/authedUser";
-import PollList from "./PollList";
-import { formatDate } from "../utils/helpers";
-
-import { Link} from "react-router-dom";
 import PollCard from "./PollCard";
 
 const Dashboard = (props) => {
-  console.log("PROPS IN Dashboard = ", props)
- //console.log("pollQuestions", props.pollQuestions)
 
- 
-
- // console.log("authedUserInfo", authedUserInfo)
   const currentUser = props.authedUser
-  //const answers =Object.keys(currentUser)
-  console.log("currentUser.currentUser", currentUser)
 
   let newPolls = [];
   let currentUserAnswers =[];
   if(currentUser) {
       currentUserAnswers = Object.keys(currentUser.answers)
-      console.log("currentUser.answers ", currentUserAnswers)
-      
-
         
       // make a Set to hold values from namesToDeleteArr
       const pollsToDeleteSet = new Set(currentUserAnswers);
@@ -41,9 +25,8 @@ const Dashboard = (props) => {
   }
     return (
        <div className="dashboard-container">
-          <Poll id="6ni6ok3ym7mf1p33lnez" />
-          <PollList  id="6ni6ok3ym7mf1p33lnez" />
-        <h3 className="center">New Question</h3>
+
+        <h3 className="center">New Questions</h3>
         <ul className="dashboard-list">
          {
           newPolls.map( (id) => {
@@ -65,7 +48,7 @@ const Dashboard = (props) => {
 }
 
 const mapStateToProps = ({pollQuestions, authedUser}) => {
-    console.log("pollQuestions", pollQuestions)
+
     const questionIds = Object.keys(pollQuestions).sort(
         (a,b) => pollQuestions[b].timestamp - pollQuestions[a].timestamp
     );

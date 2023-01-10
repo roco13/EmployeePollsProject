@@ -14,6 +14,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.page-not-found {
+  text-align: center;
+  font-size: 3em;
+  font-weight: bold;
+  padding-top: 2em;
+}
+
 .active {
   font-weight: bold;
 }
@@ -22,25 +29,38 @@ code {
       margin: 0 auto;
       padding: 10px;
   }
+header {
+  width: 100%;
+  border-bottom: 1px solid  grey;
+}
 nav ul {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  text-decoration: none;
+  padding: 0;
+  margin: 0 0 3px 10px;
 }
 
 nav li:first-child {
   padding-left: 0;
 }
 
-nav ul {
-  padding-left: 0;
-}
-
 nav li {
   list-style-type: none;
-  padding: 10px;
+  padding: 2px 10px;
+  
+}
+nav li a {
   text-decoration: none;
+  color: #000;
+}
+.user-logged {
+  position: absolute;
+  right: 10px;
+  top: 11px;
+}
+.user-logged .user-name {
+font-weight: bold;
 }
 .dashboard-container {
   max-width: 1200px;
@@ -71,4 +91,84 @@ nav li {
   background-color: rgb(218, 213, 213);
   text-align: center;
   color: #000;
+}
+/* poll */
+.poll-container {
+  max-width: 1200px;
+  margin: auto;
+}
+.poll {
+  text-align: center;
+}
+.poll .avatar img {
+  border-radius: 50%;
+}
+.poll-options {
+  display: flex;
+  max-width: 80%;
+  margin: auto;
+}
+.poll-options > div {
+  width: 46%;
+  border: solid 1px grey;
+  margin: 0 2%;
+}
+.poll-option-text {
+  font-weight: bold;
+}
+.poll-option-stats {
+  border-top: solid 1px grey;
+  padding-top: 10px;
+}
+.poll-option-selected {
+  display: block;
+  color:indianred;
+  padding-top: 5px;
+  font-size: 1.2em;
+}
+.poll button {
+  width: 100%;
+  background-color: lightblue;
+  border: none;
+  border-top: solid 1px grey;
+  padding: 10px 0;
+  font-size: 1.2em;
+}
+.new-poll  {
+  max-width: 800px;
+  margin: auto;
+}
+.new-poll  input {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+}
+.leaderboard  {
+  max-width: 800px;
+  margin: auto;
+}
+.leaderboard h3 {
+  text-align: center;
+}
+.leaderboard table {
+  width: 100%;
+  border: 1px solid grey;
+  padding: 0;
+}
+.leaderboard th, .leaderboard td {
+  border: 1px solid grey;
+  padding: 5px 0;
+}
+
+.leaderboard .leaderboar-name {
+  text-align: left;
+  padding: 0 10px;
+  font-weight: bold;
+}
+.leaderboard .leaderboar-num-answers {
+  text-align: center;
+}
+.leaderboard .leaderboar-num-questions {
+  text-align: center;
+
 }

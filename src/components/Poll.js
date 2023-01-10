@@ -1,50 +1,93 @@
 import { connect } from "react-redux";
 import { formatPoll } from "../utils/helpers";
-
+import { handdleAnswerToQuestion } from "../actions/pollQuestions";
 import { useNavigate, Link } from "react-router-dom";
 
-const Poll = (props) => {
-    console.log("PROPS IN POLL", props)
-    const navigate = useNavigate();
+const Poll = ({dispatch, formatedQuestion, authedUser}) => {
 
-   
-      if (props.question === null) {
-        return <p>This Poll doesn't exist</p>;
-      }
-      const {
-        id,
-        author,
-        avatar,
-        optionOne,
-        optionTwo,
-        userChooseOptionOne,
-        userChooseOptionTwo,
-      } = props.question;
+const navigate = useNavigate();
 
-    console.log("PROPS IN POLL", props)
+const {id,
+  author,
+  timestamp,
+  optionOne,
+  optionTwo,
+  optionOneVotes,
+  optionTwoVotes,
+  name,
+  avatar,
+  answers,
+  optionChoosen } = formatedQuestion;
+
+  let {pollWasAnswered} = formatedQuestion;
+  const numVotesOptionOne= optionOneVotes.length;
+  const numVotesOptionTwo= optionTwoVotes.length;
+
+  const prcVotesOne = numVotesOptionOne > 0 ? 
+  (numVotesOptionOne / (numVotesOptionOne+numVotesOptionTwo)).toFixed(2) * 100 : 0;
+  const prcVotesTwo = numVotesOptionTwo > 0 ?
+  (numVotesOptionTwo / (numVotesOptionOne+numVotesOptionTwo)).toFixed(2) * 100 : 0; 
+  
+  function handleVote(e, option) {
+    e.preventDefault();
+
+    answers[id]= "option"+option;
+    //answers[id]=choosenAnswer;
+    pollWasAnswered= true;
+    dispatch(handdleAnswerToQuestion(authedUser, id,answers[id]));
+    navigate(`/question/${id}`)
+  }
+
+
     return (
-        <Link to={`/question/${id}`} className="tweet">
-in poll
-        </Link>
+      
+      <div className="poll-container">
+        <div className="poll">
+          <h1>Poll By {name}</h1>
+          <p className="avatar"><img src={avatar} /></p>
+          {pollWasAnswered &&  <h2>Would You Rather:</h2>}
+          
+          <div className="poll-options">
+            <div className="poll-option" id="poll-optionOne">
+              <p className="poll-option-text">{optionOne}</p>
+              {pollWasAnswered ? (
+                <p className="poll-option-stats">Number of votes: {numVotesOptionOne}; {prcVotesOne}% of people voted for this option.
+    
+                {optionChoosen === "optionOne" &&<span className="poll-option-selected">You chose this options</span>}
+                </p>
+                
+              ) : (<button onClick={(e) => handleVote(e,"One")}>SELECT</button>)  }
+              
+            </div>
+            <div className="poll-option" id="poll-optionTwo">
+              <p className="poll-option-text">{optionTwo}</p>
+              {pollWasAnswered ? (
+                <p className="poll-option-stats">Number of votes: {numVotesOptionTwo}; {prcVotesTwo}% of people voted for this option.
+
+                {optionChoosen === "optionTwo" &&<span className="poll-option-selected">You chose this options</span>}
+
+                </p>
+              ) : (<button onClick={(e) => handleVote(e,"Two")}>SELECT</button>)  }
+            </div>
+          </div>
+          
+      
+       
+       
+      </div>
+    </div>
     )
 }
 
 const mapStateToProps = ({authedUser, pollQuestions, users}, {id}) => {
+
     const question = pollQuestions[id];
-    const userChooseOptionOne = question.optionOne.votes;
-        const userChooseOptionTwo = question.optionTwo.votes;
-        const urserAnswered =userChooseOptionOne.concat(userChooseOptionTwo)
-        // console.log("1 votes", userChooseOptionOne)
-        // console.log("2 votes", userChooseOptionTwo)
-        console.log("All votes", urserAnswered)
-        console.log("USERS= ", users)
 
     return {
         authedUser,
-        question: question
-        ? formatPoll(question,users) : null,
-        urserAnswered: urserAnswered,
-        users,
+        formatedQuestion: question
+        ? formatPoll(question,users,authedUser) : null,
+        //users,
     }
 }
 

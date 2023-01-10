@@ -7,10 +7,10 @@ const Login = ({users, UserLoginLogout, dispatch}) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleChange = (e) => {
-        setUsername(e.target.elements.username.value);
-        setPassword(e.target.elements.password.value)
-      };
+    // const handleChange = (e) => {
+    //     setUsername(e.target.elements.username.value);
+    //     setPassword(e.target.elements.password.value)
+    //   };
 
     function handleSubmit(e){
 
@@ -27,7 +27,7 @@ const Login = ({users, UserLoginLogout, dispatch}) => {
       
     return (
         <div>
-        Loggin
+        Login
         <form onSubmit={handleSubmit}>
             <input type="text" placeholder="Username" name="username" defaultValue="sarahedo" onChange={(e) => console.log(e)} />
             <input type="text" placeholder="Password" name="password" defaultValue="password123" onChange={(e) => console.log(e)} />
@@ -37,7 +37,7 @@ const Login = ({users, UserLoginLogout, dispatch}) => {
         </div>
     )
 }
-const mapStateToProps = ({ users, UserLoginLogout  }) => ({
+const mapStateToProps = ({ users, UserLoginLogout }) => ({
     UserLoginLogout,
     users
   });
