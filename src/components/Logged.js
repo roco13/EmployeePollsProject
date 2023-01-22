@@ -2,8 +2,7 @@ import { connect } from "react-redux";
 import { useNavigate} from "react-router-dom";
 import {logoutAuthedUser} from "../actions/authedUser";
 
-const Logged = ({dispatch, authedUser}) => {
-    console.log("{authedUser in Logged}", {authedUser})
+const Logged = ({dispatch, name}) => {
     const navigate = useNavigate();
     const handleLogout = () => {
 		dispatch(logoutAuthedUser());
@@ -13,7 +12,7 @@ const Logged = ({dispatch, authedUser}) => {
         <nav className="user-logged">
             <ul>
                 <li className="user-name">
-                   {authedUser.name}
+                   {name}
                 </li>
                 <li>
                     <a onClick={handleLogout}>Logout</a>
@@ -23,11 +22,11 @@ const Logged = ({dispatch, authedUser}) => {
     )
 }
 
-const mapStateToProps = ({dispatch, authedUser}) => {
-
+const mapStateToProps = ({users, authedUser}) => {
+    const { name } = users[authedUser];
+    
     return {
-        dispatch,
-        authedUser,
+        name,
     }
 }
 export default connect(mapStateToProps)(Logged);

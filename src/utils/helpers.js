@@ -8,13 +8,12 @@ export function formatDate (timestamp) {
 export function formatPoll (question, users,authedUser) {
   const { id, author, timestamp, optionOne,optionTwo } = question;
   const {name,avatarURL} = users[author];
-  const {answers} = authedUser;
-console.log("HELPER question", question)
+ 
+  const { answers } = users[authedUser];
 
-
-const pollWasAnswered = Object.keys(answers).includes(id)
-let optionChoosen;
-pollWasAnswered ? optionChoosen=answers[id] : optionChoosen=null;
+  const pollWasAnswered = Object.keys(answers).includes(id)
+  let optionChoosen;
+  pollWasAnswered ? optionChoosen=answers[id] : optionChoosen=null;
 
   return {
    // name,

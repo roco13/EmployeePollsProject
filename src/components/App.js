@@ -1,57 +1,51 @@
-import { useEffect, Fragment } from "react";
-import { connect } from "react-redux";
-import { handleInitialData } from "../actions/shared";
-import Dashboard from "./Dashboard";
-import NewPoll from "./NewPoll";
-import PollPage from "./PollPage";
-import Leaderboard from "./Leaderboard"
-import Nav from "./Nav";
-import Login from "./Login";
+import { useEffect, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { handleInitialData } from "../actions/shared"
+import Dashboard from './Dashboard';
+import Login from './Login';
+import NewPoll from './NewPoll';
+import Nav from './Nav';
 import Logged from "./Logged";
-import PollList from "./PollList";
-import LoadingBar from "react-redux-loading-bar";
-import { Routes, Route } from "react-router-dom";;
+import PollPage from "./PollPage";
+import Leaderboard from "./Leaderboard";
+import LoadingBar from 'react-redux-loading-bar';
+import { Routes, Route } from 'react-router-dom';
 
+const App = ({loading, dispatch}, props) => {
 
-const App = (props) => {
-  useEffect(() => {
-    props.dispatch(handleInitialData());
-  }, []);
- 
+  useEffect( () => {
+    dispatch(handleInitialData())
+  },[]);
+  
   return (
- 
-  <Fragment>    
-  <LoadingBar /> 
-  <div className="container">
-    
-    {
-      
-      props.authedUser === null ? <Login /> : (
-        //save authedUser to store?
+    <Fragment>
+      <LoadingBar />
+      <div className="container">     
+      {
+        loading === true ? < Login /> : (
         <div>
           <header className="">
             <Nav />
-            <Logged />
+            {<Logged />}
           </header>
           <Routes>
             <Route path="/" exact element={<Dashboard />} />
             <Route path="/add"  element={<NewPoll />} />
             <Route path="/leaderboard"  element={<Leaderboard />} />
-            <Route path="/question/:id"  element={<PollPage />} /> 
-            {/* <Route path="/404"  element={<PageNotFound />} /> */}
+            <Route path="/question/:id"  element={<PollPage />} />
           </Routes>
         </div>
-      )
-    }
-  </div>
-  </Fragment> 
-  )
-};
+        )
+      }
+    </div>
+    </Fragment>   
+  );
+}
 
-const mapStateToProps = ({ authedUser }) => ({
-  //loading: authedUser === null,
-  authedUser,
-});
+const mapStateToProps = ({authedUser}) => (
+  {
+    loading: authedUser === null,
+  }
+)
 
 export default connect(mapStateToProps)(App);
-

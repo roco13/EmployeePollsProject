@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Poll from "./Poll";
-import { useLocation, useNavigate, useParams, Link } from "react-router-dom";
+import { useLocation, useNavigate, useParams} from "react-router-dom";
 
 const withRouter = (Component) => {
   const ComponentWithRouterProp = (props) => {
@@ -13,26 +13,23 @@ const withRouter = (Component) => {
   return ComponentWithRouterProp;
 };
 
-const PollPage = (props) => {
-    const question = props.question;
+const PollPage = ({question, id}) => {
+  
     return (
     <div className="poll-page">
 
-      {/* {question ? <Poll id={props.id} /> : <Link to={`/`} className="">Page Not found</Link> } */}
-      {question ? <Poll id={props.id} /> : <div className="page-not-found">Page Not found</div>}
+      {question ? <Poll id={id} /> : <div className="page-not-found">Page Not found</div>}
 
     </div>
     )
 }
 
-const mapStateToProps = ({authedUser, pollQuestions, users}, props) => {
+const mapStateToProps = ({questions}, props) => {
     const { id } = props.router.params;
-    const question = pollQuestions[id];
+    const question = questions[id];
 
     return {
-        authedUser,
-        question: question,
-        users,
+        question,
         id,
     }
 }

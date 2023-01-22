@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-const Leaderboard = ({authedUser, users}) => {
+const Leaderboard = ({users}) => {
 
     return (
         <div className="leaderboard">
@@ -29,14 +29,13 @@ const Leaderboard = ({authedUser, users}) => {
         </div>
     )
 }
-const mapStateToProps = ({ authedUser, users }) => {
+const mapStateToProps = ({ users }) => {
 
     const userValues = Object.values(users);
 
     const newUserList = userValues.sort((a, b) => (Object.keys(b.answers).length)- (Object.keys(a.answers).length ))
 
     return {
-        authedUser,
         users: newUserList,
     }
 

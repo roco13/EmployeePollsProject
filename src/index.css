@@ -54,10 +54,33 @@ nav li a {
   text-decoration: none;
   color: #000;
 }
+.user-login h1 {
+  text-align: center;
+}
+.user-login-selection {
+  width: 300px;
+  position: relative;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.user-login-selection li {
+  list-style: none;
+}
+.user-login-selection input {
+  width: 100px;
+}
 .user-logged {
   position: absolute;
   right: 10px;
   top: 11px;
+}
+.user-login-selection-name {
+  display: inline-block;
+  position: relative;
+  top: -48px;
+  font-weight: bold;
+  padding: 0 0 0 15px;
 }
 .user-logged .user-name {
 font-weight: bold;
@@ -114,6 +137,7 @@ font-weight: bold;
   margin: 0 2%;
 }
 .poll-option-text {
+  text-transform: capitalize;
   font-weight: bold;
 }
 .poll-option-stats {
@@ -123,8 +147,10 @@ font-weight: bold;
 .poll-option-selected {
   display: block;
   color:indianred;
-  padding-top: 5px;
+  padding-top: 7px;
   font-size: 1.2em;
+  font-weight: bold;
+  font-style: italic;
 }
 .poll button {
   width: 100%;

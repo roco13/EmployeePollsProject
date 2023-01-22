@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { formatPoll } from "../utils/helpers";
-import { handdleAnswerToQuestion } from "../actions/pollQuestions";
-import { useNavigate, Link } from "react-router-dom";
+import { handleAddAnswerToQuestion } from "../actions/questions";
+import { useNavigate } from "react-router-dom";
 
 const Poll = ({dispatch, formatedQuestion, authedUser}) => {
 
@@ -31,15 +31,12 @@ const {id,
   function handleVote(e, option) {
     e.preventDefault();
 
-    answers[id]= "option"+option;
-    //answers[id]=choosenAnswer;
-    pollWasAnswered= true;
-    dispatch(handdleAnswerToQuestion(authedUser, id,answers[id]));
+    const answerId =  "option"+option; 
+    dispatch(handleAddAnswerToQuestion(authedUser,id,answerId));
     navigate(`/question/${id}`)
   }
 
-
-    return (
+  return (
       
       <div className="poll-container">
         <div className="poll">
@@ -51,9 +48,9 @@ const {id,
             <div className="poll-option" id="poll-optionOne">
               <p className="poll-option-text">{optionOne}</p>
               {pollWasAnswered ? (
-                <p className="poll-option-stats">Number of votes: {numVotesOptionOne}; {prcVotesOne}% of people voted for this option.
+                <p className="poll-option-stats">Number of votes: {numVotesOptionOne}<br />{prcVotesOne}% of people voted for this option.
     
-                {optionChoosen === "optionOne" &&<span className="poll-option-selected">You chose this options</span>}
+                {optionChoosen === "optionOne" &&<span className="poll-option-selected">You chose this option</span>}
                 </p>
                 
               ) : (<button onClick={(e) => handleVote(e,"One")}>SELECT</button>)  }
@@ -62,32 +59,27 @@ const {id,
             <div className="poll-option" id="poll-optionTwo">
               <p className="poll-option-text">{optionTwo}</p>
               {pollWasAnswered ? (
-                <p className="poll-option-stats">Number of votes: {numVotesOptionTwo}; {prcVotesTwo}% of people voted for this option.
+                <p className="poll-option-stats">Number of votes: {numVotesOptionTwo}<br />{prcVotesTwo}% of people voted for this option.
 
-                {optionChoosen === "optionTwo" &&<span className="poll-option-selected">You chose this options</span>}
+                {optionChoosen === "optionTwo" &&<span className="poll-option-selected">You chose this option</span>}
 
                 </p>
               ) : (<button onClick={(e) => handleVote(e,"Two")}>SELECT</button>)  }
             </div>
           </div>
-          
-      
-       
-       
       </div>
     </div>
     )
 }
 
-const mapStateToProps = ({authedUser, pollQuestions, users}, {id}) => {
+const mapStateToProps = ({authedUser, questions, users}, {id}) => {
 
-    const question = pollQuestions[id];
+    const question = questions[id];
 
     return {
         authedUser,
         formatedQuestion: question
         ? formatPoll(question,users,authedUser) : null,
-        //users,
     }
 }
 
