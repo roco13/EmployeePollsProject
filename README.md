@@ -1,3 +1,5 @@
+npm install redux-mock-store --save-dev
+
 # Employee Polls Project
 
 This is the starter code for the final assessment project for Udacity's React & Redux course.

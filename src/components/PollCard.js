@@ -19,9 +19,9 @@ const PollCard = (props) => {
     return (
         <li>
         <p><img src={avatar} width="50" height="50" alt={`Avatar of ${name}`}/></p>
-        <h4 className="poll-author">{author}</h4>
-        <p>{formatDate(timestamp)}</p>
-       <Link to={`/question/${id}`} id={id} className="go-to-poll">Show</Link>
+        <h4 className="poll-author" data-testid="poll-author">{author}</h4>
+        <p data-testid="timestamp">{formatDate(timestamp)}</p>
+        <Link data-testid="go-to-poll" to={`/question/${id}`} id={id} className="go-to-poll">Show</Link>
       </li>
     )
 

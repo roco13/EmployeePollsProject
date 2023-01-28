@@ -31,10 +31,10 @@ const NewPoll = ({dispatch}) => {
         <div className="new-poll">
             <h3>Would You Rather:</h3>
             <form onSubmit={handleSubmit} >
-                <input type="text" name="optionOneText" placeholder="Enter Option One" maxLength={250} onChange={handleChangeOption1} />
+                <input data-testid="option-one-input" type="text" name="optionOneText" placeholder="Enter Option One" maxLength={250} onChange={handleChangeOption1} />
                 {question1Left <= 100 && <div>{question1Left}</div>}
-                <input type="text" name="optionTwoText" placeholder="Enter Option Two" maxLength={250} onChange={handleChangeOption2} />
-                <button type="submit" disabled={textOptionOne === "" || textOptionTwo === ""}>Submit</button>
+                <input data-testid="option-two-input" type="text" name="optionTwoText" placeholder="Enter Option Two" maxLength={250} onChange={handleChangeOption2} />
+                <button data-testid="submit-button" type="submit" disabled={textOptionOne === "" || textOptionTwo === ""}>Submit</button>
             </form>
         </div>
     )
