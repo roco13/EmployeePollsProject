@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import Poll from "./Poll";
 import { useLocation, useNavigate, useParams} from "react-router-dom";
+import NotFound from "./NotFound";
 
 const withRouter = (Component) => {
   const ComponentWithRouterProp = (props) => {
@@ -13,13 +14,13 @@ const withRouter = (Component) => {
   return ComponentWithRouterProp;
 };
 
-const PollPage = ({question, id}) => {
+const PollPage = ({question, id, authedUser}) => {
   
     return (
     <div className="poll-page">
 
-      {question ? <Poll id={id} /> : <div className="page-not-found">Page Not found</div>}
-
+      {question ? <Poll id={id} /> : <NotFound />}
+   
     </div>
     )
 }

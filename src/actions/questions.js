@@ -30,7 +30,6 @@ export function addAnswerToQuestions(authedUser,qid, answer) {
     };
 }
 
-
 export function handleAddQuestion(optionOneText, optionTwoText) {
     return (dispatch, getState) => {
         const {authedUser} = getState();
@@ -39,7 +38,7 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
             'optionOneText': optionOneText,
             'optionTwoText':optionTwoText,
             'author': authedUser
-        }
+        };
 
         dispatch(showLoading());
             return saveQuestion(question)
@@ -47,18 +46,17 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
                 dispatch(addQuestionToQuestions(question))
                 dispatch(addQuestionToUser(authedUser, question.id))
                 dispatch(hideLoading());
-            })
-    }
+            });
+    };
 }
 
 export function handleAddAnswerToQuestion( authedUser, qid, answer) {
-    console.log('authedUser, qid, answer', authedUser, qid, answer)
     return(dispatch, getState) => {
         return saveQuestionAnswer( authedUser, qid, answer)
         .then( () => {
             dispatch(addAnswerToQuestions( authedUser, qid, answer ))
             dispatch(addAnswerToUser( authedUser, qid, answer ))
-        })
-    }
+        });
+    };
 }
 

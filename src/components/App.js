@@ -8,8 +8,10 @@ import Nav from './Nav';
 import Logged from "./Logged";
 import PollPage from "./PollPage";
 import Leaderboard from "./Leaderboard";
+import NotFound from './NotFound';
 import LoadingBar from 'react-redux-loading-bar';
 import { Routes, Route } from 'react-router-dom';
+import authedUser from '../reducers/authedUser';
 
 const App = ({loading, dispatch}, props) => {
 
@@ -33,6 +35,7 @@ const App = ({loading, dispatch}, props) => {
             <Route path="/add"  element={<NewPoll />} />
             <Route path="/leaderboard"  element={<Leaderboard />} />
             <Route path="/question/:id"  element={<PollPage />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
         )

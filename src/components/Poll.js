@@ -50,10 +50,10 @@ const {id,
               {pollWasAnswered ? (
                 <p className="poll-option-stats">Number of votes: {numVotesOptionOne}<br />{prcVotesOne}% of people voted for this option.
     
-                {optionChoosen === "optionOne" &&<span className="poll-option-selected">You chose this option</span>}
+                {optionChoosen === "optionOne" &&<span className="poll-option-selected">You voted for this option</span>}
                 </p>
                 
-              ) : (<button onClick={(e) => handleVote(e,"One")}>SELECT</button>)  }
+              ) : (<button data-testid="vote-option-one" onClick={(e) => handleVote(e,"One")}>SELECT</button>)  }
               
             </div>
             <div className="poll-option" id="poll-optionTwo">
@@ -61,10 +61,10 @@ const {id,
               {pollWasAnswered ? (
                 <p className="poll-option-stats">Number of votes: {numVotesOptionTwo}<br />{prcVotesTwo}% of people voted for this option.
 
-                {optionChoosen === "optionTwo" &&<span className="poll-option-selected">You chose this option</span>}
+                {optionChoosen === "optionTwo" &&<span className="poll-option-selected">You voted for this option</span>}
 
                 </p>
-              ) : (<button onClick={(e) => handleVote(e,"Two")}>SELECT</button>)  }
+              ) : (<button data-testid="vote-option-two" onClick={(e) => handleVote(e,"Two")}>SELECT</button>)  }
             </div>
           </div>
       </div>

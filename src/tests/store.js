@@ -3,9 +3,9 @@ import { configureStore } from '@reduxjs/toolkit';
 export const store = configureStore({
     reducer: {
         questions: {
-            'xyz': {
+            '8xf0y6ziyjabvozdd253nd': {
                 id:'xyz',
-                author: "sarahedo",
+                author: "8xf0y6ziyjabvozdd253nd",
                 timestamp: 1467166872634,
                 optionOne: {
                     votes: ['sarahedo'],
@@ -17,6 +17,15 @@ export const store = configureStore({
                 }
             },
         },
+        users: {
+            sarahedo: {
+                id: 'sarahedo',
+                name: 'Sarah Edo',
+                avatarURL: 'https://ui.dev/would-you-rather/sarah.jpg',
+                
+              },
+        },
+        authedUser: 'sarahedo',
     },
    
     

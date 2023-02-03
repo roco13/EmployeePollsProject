@@ -19,7 +19,7 @@ const Login = ({users, dispatch}) => {
             <ul className="user-login-selection">                
                 {users.map( (user, index) => (
                     <li key={user.id} value={user.id} className={"user"+index}>
-                       <input type="image" id={"user"+index} value={user.id} alt={user.name} src={user.avatarURL} onClick={handdleClick} />
+                       <input data-testid={user.id} type="image" id={"user"+index} value={user.id} alt={user.name} src={user.avatarURL} onClick={handdleClick} />
                        <span className="user-login-selection-name">{user.name}</span>
                     </li>
                 ))}

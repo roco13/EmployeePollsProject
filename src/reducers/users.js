@@ -16,7 +16,6 @@ export default function users(state= {}, action){
                 },
             };
         case ADD_ANSWER_TO_USER:
-            console.log('[action]', [action])
             return {
                 ...state,
                 [action.authedUser]: {
@@ -24,7 +23,7 @@ export default function users(state= {}, action){
                     answers: {
                         ...state[action.authedUser].answers,
                        [ action.qid]:action.answer,
-                    }
+                    },
                 },
             };
         default:

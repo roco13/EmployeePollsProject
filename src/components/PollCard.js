@@ -2,18 +2,19 @@ import { connect } from "react-redux";
 import { formatDate } from "../utils/helpers";
 import { useNavigate, Link } from "react-router-dom";
 
-const PollCard = (props) => {
-    if (props.question === null) {
+const PollCard = ({question,users}) => {
+
+    if (question === null) {
         return <p>This Poll doesn't exist</p>;
     }
     const {
         id,
         author,
         timestamp,
-    } = props.question;
+    } = question;
       
-    const avatar = props.users[author].avatarURL;
-    const name = props.users[author].name;
+    const avatar = users[author].avatarURL;
+    const name = users[author].name;
     
 
     return (
@@ -33,7 +34,6 @@ const mapStateToProps = ({questions, users}, {id}) => {
       return {
           question,
           users,
-          id,
       }
   }
 export default connect(mapStateToProps)(PollCard);

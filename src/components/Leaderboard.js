@@ -17,9 +17,9 @@ const Leaderboard = ({users}) => {
                 <tbody>
                 {users.map(user => (
                     <tr key={user.id}>
-                        <td className="leaderboar-name">{user.name}</td>
-                        <td className="leaderboar-num-answers">{Object.keys(user.answers).length}</td>
-                        <td className="leaderboar-num-questions">{user.questions.length}</td>
+                        <td data-testid={"poll-user-"+user.id} className="leaderboar-name">{user.name}</td>
+                        <td data-testid={"poll-user-num-answers-"+user.id} className="leaderboar-num-answers">{Object.keys(user.answers).length}</td>
+                        <td data-testid={"poll-user-num-questions-"+user.id} className="leaderboar-num-questions">{user.questions.length}</td>
                     </tr>
                 ))}
 
