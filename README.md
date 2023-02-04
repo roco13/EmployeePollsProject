@@ -2,7 +2,7 @@
 
 This is the final assessment project for Udacity's React & Redux course.
 
-To use the app, the user needs to log in. Once the user is authenticated, he will be able to navigate to create a new poll, answer new polls, view answeredpolls, and check the leaderboard status.
+To use the app, the user needs to log in. Once the user is authenticated, he will be able to navigate to create a new poll, answer new polls, view answered polls, and check the leaderboard status.
 
 ## Install
 
