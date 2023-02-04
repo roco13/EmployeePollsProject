@@ -165,9 +165,8 @@ export function _saveQuestion (question) {
     if (!question.optionOneText || !question.optionTwoText || !question.author) {
       reject("Please provide optionOneText, optionTwoText, and author");
     }
-    console.log("QUESTION INSIDE _saveQuestion", question)
+    
     const formattedQuestion = formatQuestion(question)
-    console.log("formattedQuestion inside _saveQuestion", question)
     setTimeout(() => {
       questions = {
         ...questions,

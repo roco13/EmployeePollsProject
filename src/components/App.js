@@ -22,12 +22,14 @@ const App = ({loading, dispatch}, props) => {
   return (
     <Fragment>
       <LoadingBar />
-      <div className="container">     
+      <div className="container">  
+      <header className="main-nav">
+        {<Nav /> }
+      </header>        
       {
         loading === true ? < Login /> : (
         <div>
           <header className="">
-            <Nav />
             {<Logged />}
           </header>
           <Routes>

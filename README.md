@@ -1,16 +1,24 @@
-npm install redux-mock-store --save-dev
-
 # Employee Polls Project
 
-This is the starter code for the final assessment project for Udacity's React & Redux course.
+This is the final assessment project for Udacity's React & Redux course.
 
-The `_DATA.js` file represents a fake database and methods that let you access the data. The only thing you need to edit in the ` _DATA.js` file is the value of `avatarURL`. Each user should have an avatar, so you’ll need to add the path to each user’s avatar.
+To use the app, the user needs to log in. Once user is authenticated, he will be able to navigate to create a new poll, answer new polls, view answeredpolls, and check the leaderboard status.
 
-Using the provided starter code, you'll build a React/Redux front end for the application. We recommend using the [Create React App](https://github.com/facebook/create-react-app) to bootstrap the project.
+## Install
+
+`npm install`
+
+## start
+
+`npm start`
+
+## Test
+
+`npm run test`
 
 ## Data
 
-There are two types of objects stored in our database:
+There are two types of objects stored in fake database:
 
 * Users
 * Questions
