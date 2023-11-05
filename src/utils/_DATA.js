@@ -3,7 +3,7 @@ let users = {
     id: 'sarahedo',
     password:'password123',
     name: 'Sarah Edo',
-    avatarURL: 'https://ui.dev/would-you-rather/sarah.jpg',
+    avatarURL: '/images/sarah.jpg',
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
       "6ni6ok3ym7mf1p33lnez": 'optionOne',
@@ -16,7 +16,7 @@ let users = {
     id: 'tylermcginnis',
     password:'abc321',
     name: 'Tyler McGinnis',
-    avatarURL: 'https://ui.dev/would-you-rather/tyler.jpg',
+    avatarURL: '/images/tyler.jpg',
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
       "xj352vofupe1dqz9emx13r": 'optionTwo',
@@ -27,7 +27,7 @@ let users = {
     id: 'mtsamis',
     password:'xyz123',
     name: 'Mike Tsamis',
-    avatarURL: 'https://media.licdn.com/dms/image/C4D03AQH620XKq3ehIg/profile-displayphoto-shrink_400_400/0/1601844344413?e=1676505600&v=beta&t=w1xwHFMiuIOuyqluDEaRE-XpT3v1OFvDfxuxCKM8nPw',
+    avatarURL: '/images/mike.jpg',
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',
@@ -39,7 +39,7 @@ let users = {
     id: 'zoshikanlu',
     password:'pass246',
     name: 'Zenobia Oshikanlu',
-    avatarURL: 'https://www.w3schools.com/howto/img_avatar2.png',
+    avatarURL: '/images/img_avatar2.png',
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
     },
